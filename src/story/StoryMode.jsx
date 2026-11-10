@@ -4,8 +4,16 @@ import {
   Mountain, Pickaxe, Satellite, Sun, Users, Wheat
 } from 'lucide-react';
 import { CHAPTERS, buildBlocks, SECTOR_COLOR, fmtNum } from './storyData';
-import { placeholderFor } from './placeholders';
 import { PROVINCIAL_TOTALS } from '../data';
+
+const REFERENCE_ASSETS = {
+  hero: '/reference-assets/hero-territory.jpg',
+  mineria: '/reference-assets/mineria.jpg',
+  litio: '/reference-assets/litio.jpg',
+  energia: '/reference-assets/energia.jpg',
+  agroindustria: '/reference-assets/agroindustria.jpg',
+  turismo: '/reference-assets/turismo.jpg'
+};
 
 const NAV = [
   ['territorio', 'El territorio', Mountain, 0],
@@ -61,9 +69,8 @@ function Metric({ icon: Icon, label, value, tone = '#16d5ed' }) {
 
 function PhotoCard({ card }) {
   const Icon = card.icon;
-  const image = placeholderFor(card.slug);
   return <article className="sector-card" style={{ '--sector-color': card.color }}>
-    <img src={image.url} alt={image.alt} />
+    <img src={REFERENCE_ASSETS[card.slug]} alt={`${card.title} en la matriz productiva de Jujuy`} />
     <div className="sector-card-shade" />
     <div className="relative z-10 flex h-full flex-col justify-end p-4">
       <Icon className="mb-2 h-5 w-5" style={{ color: card.color }} />
@@ -104,8 +111,6 @@ export default function StoryMode({ mapRef, areas, reducedMotion, onStoryState, 
   }, [active, chapter, mapRef, onActive, onStoryState]);
 
   const go = (index) => refs.current[index]?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-  const heroImage = placeholderFor('portada');
-
   return <div className="story-dashboard">
     <aside className="story-sidebar">
       <div className="story-brand"><div className="story-brand-mark"><Mountain /></div><strong>Jujuy</strong><span>Datos que<br />cuentan</span></div>
@@ -128,7 +133,7 @@ export default function StoryMode({ mapRef, areas, reducedMotion, onStoryState, 
       </header>
 
       <section className="story-hero" ref={(el) => (refs.current[0] = el)} data-chapter="territorio">
-        <img src={heroImage.url} alt={heroImage.alt} className="story-hero-image" />
+        <img src={REFERENCE_ASSETS.hero} alt="Paisaje territorial de Jujuy con mapa productivo" className="story-hero-image" />
         <div className="story-hero-overlay" />
         <div className="story-hero-copy">
           <span className="story-kicker">Capítulo 1</span><h1>El territorio</h1><p>Jujuy, una provincia diversa y estratégica, donde la geografía se convierte en motor de desarrollo.</p>
