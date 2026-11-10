@@ -164,7 +164,7 @@ export default function App() {
       </header>
 
       {/* MAPA ÚNICO Y PERSISTENTE: no se desmonta al cambiar de modo; sólo cambia el marco que lo rodea */}
-      <div className={story ? 'story-map-layer fixed left-0 top-14 z-20 h-[42vh] w-full lg:left-[184px] lg:z-0 lg:h-[470px] lg:w-[calc(100%_-_184px)]' : 'fixed inset-x-0 bottom-0 top-14 z-0'}>
+      <div className={story ? 'fixed left-0 top-14 z-20 h-[42vh] w-full lg:left-[184px] lg:z-0 lg:h-[470px] lg:w-[calc(100%_-_184px)]' : 'fixed inset-x-0 bottom-0 top-14 z-0'}>
         <MapaJujuy ref={mapRef} departments={mapDepartments} selectedDeptId={selectedDeptId} activeFilter={activeFilter}
           onSelect={story ? () => {} : (id) => { setSelectedDeptId(id); if (id) setChapter(1); }} view3d={view3d} onFeatures={setAreas}
           scenes={sceneProps} onScenePick={setPicked} onLevel={setLevel}
