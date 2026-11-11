@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Capitulo1 from './components/ui/Capitulo1';
 import Capitulo2 from './components/ui/Capitulo2';
 import Capitulo3 from './components/ui/Capitulo3';
+import DimensionCultural from './components/ui/DimensionCultural';
 
 function App() {
   const [capituloActivo, setCapituloActivo] = useState(1);
@@ -43,12 +44,7 @@ function App() {
             </>
           )}
 
-          {dimensionActiva === 'cultural' && (
-            <div className="p-8 text-center text-slate-400 bg-slate-900/40 rounded-xl border border-slate-800 mt-4">
-              <h2 className="text-xl font-bold text-amber-200">Dimensión Cultural</h2>
-              <p className="text-sm mt-2">Módulo en proceso de desarrollo e integración de datos...</p>
-            </div>
-          )}
+          {dimensionActiva === 'cultural' && <DimensionCultural />}
 
           {dimensionActiva === 'tecnologica' && (
             <div className="p-8 text-center text-slate-400 bg-slate-900/40 rounded-xl border border-slate-800 mt-4">
